@@ -42,12 +42,12 @@ public class VendedorDAO {
     public void alterar (Vendedor vendedor){
         PreparedStatement stmt = null;
         try {
-            stmt=connection.prepareStatement("update vendedor set dataNasc=?, endereco=?, telefone=?, email=?, nome=?, salario=?, Gerente_idGerente=?  where idVendedor=?;");
-            stmt.setString(1, vendedor.getDataNasc());
-            stmt.setString(2, vendedor.getEndereco());
-            stmt.setString(3, vendedor.getTelefone());
-            stmt.setString(4, vendedor.getEmail());
-            stmt.setString(5, vendedor.getNome());
+            stmt=connection.prepareStatement("update vendedor set nome=?, dataNasc=?, endereco=?, telefone=?, email=?, salario=?, Gerente_idGerente=?  where idVendedor=?;");
+            stmt.setString(1, vendedor.getNome());
+            stmt.setString(2, vendedor.getDataNasc());
+            stmt.setString(3, vendedor.getEndereco());
+            stmt.setString(4, vendedor.getTelefone());
+            stmt.setString(5, vendedor.getEmail());
             stmt.setString(6, vendedor.getSalario());
             stmt.setInt(7, vendedor.getGerente_idGerente());
             stmt.setInt(8, vendedor.getIdVendedor());
