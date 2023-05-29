@@ -383,7 +383,7 @@ public class VendedorGUI extends javax.swing.JFrame {
         vendedor= dao.listar().get(index);//retorna o objeto dentro do arrayList de acordo com a posição index
         
         //seta as novas informações para o objeto selecionado
-        vendedor.setIdVendedor(idVendedor);
+        //vendedor.setIdVendedor(idVendedor);
         vendedor.setNome(txtNome.getText());
         vendedor.setDataNasc(txtData.getText());
         vendedor.setEndereco(txtEndereço.getText());
