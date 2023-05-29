@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Gerente;
@@ -388,12 +389,21 @@ public class GerenteGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
+       // int IdGerente = Integer.parseInt(txtId.getText());
+        int index = tbGerente.getSelectedRow();//retorna o numero da linha selecionada
+
+       // Gerente gerente = new Gerente();
+       // GerenteDAO dao = new GerenteDAO();
+        if(index>=0){
+        //int index = tbGerente.getSelectedRow();//retorna o numero da linha selecionada
+        //gerente= dao.listar().get(index);//retorna o objeto dentro do arrayList de acordo com a posição index
         int IdGerente = Integer.parseInt(txtId.getText());
         Gerente gerente = new Gerente();
         GerenteDAO dao = new GerenteDAO();
+        ArrayList<Gerente> listaGerentes = (ArrayList<Gerente>) dao.listar();
         
-        int index = tbGerente.getSelectedRow();//retorna o numero da linha selecionada
-        gerente= dao.listar().get(index);//retorna o objeto dentro do arrayList de acordo com a posição index
+        if (index < listaGerentes.size()) {
+            gerente = listaGerentes.get(index);
         
         //seta as novas informações para o objeto selecionado
         //gerente.setIdGerente(IdGerente);
@@ -406,6 +416,18 @@ public class GerenteGUI extends javax.swing.JFrame {
         
         dao.alterar(gerente);//faz as alterações no banco de dados
         carregaTabela();
+        } else {
+            // Índice inválido, lide com isso adequadamente
+            // Exiba uma mensagem de erro ou tome alguma ação apropriada
+            JOptionPane.showMessageDialog(this, "Selecione um gerente válido da tabela.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } 
+        }else {
+        // Índice inválido, lide com isso adequadamente
+        // Exiba uma mensagem de erro ou tome alguma ação apropriada
+        JOptionPane.showMessageDialog(this, "Selecione um gerente na tabela.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+        
+    
     }//GEN-LAST:event_btAlterarActionPerformed
 
     private void btVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltaActionPerformed
